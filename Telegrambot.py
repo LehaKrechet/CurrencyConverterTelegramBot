@@ -3,21 +3,23 @@ from telebot import types
 from currency_converter import CurrencyConverter
 from datetime import date, datetime
 import os
+import token
 
 mount = 0
 username = None
 datime = date.today()
 datimetime = datetime.today()
-bot = telebot.TeleBot('5438302448:AAH3I_VRAM8LAqayTXvKF4y_TUiEKbr-cYw')
+bot = telebot.TeleBot(f"{token.tok}")
 currency = CurrencyConverter()
 admchatid = ''
+Logi = '/home/krechet/work/python/LogTelegBot'
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
     global username
-    loglist = open('/home/krechet/work/python/LogTelegBot/loglist.txt', 'w')
-    log = open(f'/home/krechet/work/python/LogTelegBot/Log{message.from_user.first_name}{message.from_user.last_name}.txt', 'a+')
+    loglist = open(f'{Logi}/loglist.txt', 'w')
+    log = open(f'{Logi}/Log{message.from_user.first_name}{message.from_user.last_name}.txt', 'a+')
     bot.send_message(message.chat.id,
                      f'Привет, {message.from_user.first_name} {message.from_user.last_name} - это бот который поможет '
                      f'узнать курс валют')
